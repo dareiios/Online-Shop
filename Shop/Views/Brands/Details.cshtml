@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CareCosmetic>
+
+
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="@item.Image" width="100%" height="225" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text">@item.Title</p>
+                                @*<p class="card-text">@item.Brand.Title</p>*@
+
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a type="btn btn-success" asp-controller="CareCosmetic" asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">View</a>
+                                        @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                                        {
+                                            <a asp-controller="CareCosmetic" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            <form asp-action="Delete" method="post" asp-controller="CareCosmetic">
+                                                <input type="hidden" value="@item.Id" name="id" />
+                                                <input type="submit" value="Delete" class="btn btn-sm btn-outline-secondary" />
+                                            </form>
+                                        }
+
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <form asp-action="AddBasket" method="post" asp-controller="Basket">
+                                                <!--был carecosmetic-->
+                                                <input type="hidden" value="@item.Id" name="id" />
+                                                <input type="submit" value="AddBasket" class="btn btn-sm btn-outline-secondary" />
+                                            </form>
+                                        }
+
+                                    </div>
+                                </div>
+                                <small class="text-muted"><b>@item.Price p</b> </small>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+

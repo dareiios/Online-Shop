@@ -1,0 +1,32 @@
+﻿@model CareCosmetic
+
+<div class="container">
+
+    <h1 class="my-4">
+        Club: @Model.Title
+    </h1>
+
+    <div class="row">
+
+        <div class="col-md-8">
+            <img class="img-fluid" src="@Model.Image" alt="">
+        </div>
+
+        <div class="col-md-4">
+            <h3 class="my-3">@Model.Title</h3>
+            <p>@Model.Description</p>
+            <h3 class="my-3">Info</h3>
+            <ul>
+                <li>@Model.Address.City</li>
+                <li>@Model.Address.Region</li>
+                <li>@Model.CareCosmeticCategory</li>
+                <li>@Model.Brand.Title</li>
+                <li>@Model.Price</li>
+
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+

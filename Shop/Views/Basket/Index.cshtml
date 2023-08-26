@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Basket>
+           
+
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            @{ var CommonCount = 0;}
+            @foreach (var item in Model)
+            {
+
+                //var title = item.CareCosmetic != null ? item.CareCosmetic.Title : item.DecorativeCosmetic.Title;
+                //var Image = item.CareCosmetic != null ? item.CareCosmetic.Image : item.DecorativeCosmetic.Image;
+                //var Brand = item.CareCosmetic != null ? item.CareCosmetic.brand : item.DecorativeCosmetic.brand;
+                //var price = item.CareCosmetic != null ? item.CareCosmetic.Price : item.DecorativeCosmetic.Price;
+                var sum = item.CareCosmetic.Price * item.Count;
+                //var sum = item.Sum; //цена одного товара
+                CommonCount = CommonCount + sum; //цена всех товаров вместе
+
+
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" src="@item.CareCosmetic.Image" width="100%" height="225" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">@item.CareCosmetic.Title</p>
+                            @*<p class="card-text">@item.CareCosmetic.brand</p>*@
+                            @*<p class="card-text">@Category</p>*@
+                            <p class="card-text">@sum p</p>
+
+
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <form asp-action="Delete" method="post" asp-controller="Basket">
+                                        <input type="hidden" value="@item.Id" name="id" />
+                                        <input type="submit" value="Delete" class="btn btn-sm btn-outline-secondary" />
+                                    </form>
+                                </div>
+                                <a type="button" class="btn btn-sm btn-outline-secondary" asp-controller="Basket" asp-action="Decrement" asp-route-id="@item.Id">-</a>
+                                <p class="card-text">Count @item.Count</p>
+                                <form asp-action="Increment" method="post" asp-controller="Basket">
+                                    <input type="hidden" value="@item.Id" name="id" />
+                                    <input type="submit" value="+" class="btn btn-sm btn-outline-secondary" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <big>Итого: @CommonCount p</big>
+        <a asp-controller="Order" asp-action="Create" class="btn btn-sm btn-outline-secondary">Заказать</a>
+
+    </div>
+</div>
+
