@@ -12,7 +12,7 @@ namespace Shop.Models
         public string? ProfileImgUrl { get; set; }
         public string? City { get; set; }
         public string? State { get; set; }
-        public Address? Adress { get; set; }//может принимать тип null
+        public Address? Adress { get; set; }
 
         [ForeignKey("Address")]
         public int? AddressId { get; set; }

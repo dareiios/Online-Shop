@@ -310,6 +310,9 @@ namespace Shop.Migrations
                     b.Property<int?>("AddressId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
@@ -343,6 +346,9 @@ namespace Shop.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HowToUse")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
@@ -381,7 +387,7 @@ namespace Shop.Migrations
                             Id = 2,
                             AddressId = 1,
                             BrandId = 0,
-                            CareCosmeticCategory = 0,
+                            CareCosmeticCategory = 5,
                             Description = "this is description2",
                             Image = "https://cdn.tkaner.com/wp/uploads/2020/11/kosmetika-1-scaled.jpg",
                             Price = 0,

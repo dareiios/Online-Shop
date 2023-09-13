@@ -1,0 +1,75 @@
+﻿/* * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+} */
+
+body {
+    /*background: #e3edf7;*/
+    background: url(/images/0.jpg);
+    background-size: cover;
+}
+
+.wrapp {
+    display: contents;
+}
+
+    .wrapp img {
+        border: 2px solid #808080;
+        border-radius: 30px;
+        margin-left: 30px;
+        margin-top: 30px;
+    }
+
+.accordion {
+    margin: 60px auto;
+    width: 600px;
+}
+
+    .accordion li {
+        list-style: none;
+        width: 100%;
+        margin: 20px;
+        padding: 10px;
+        border-radius: 8px;
+        background: #e3edf7;
+        box-shadow: -6px -6px 10px -1px black;
+    }
+
+        .labell {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+.labell:before {
+    content: '+';
+    margin-right: 10px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+input[type='radio'] {
+    display: none;
+}
+
+.accordion .content {
+    color: #555;
+    padding: 0 10px;
+    line-height: 25px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s, padding 0.5s;
+}
+
+.accordion input[type='radio']:checked + label + .content {
+    max-height: 400px;
+    padding: 10px 10px 10px;
+}
+
+.accordion input[type='radio']:checked + label::before {
+    content: '-';
+}

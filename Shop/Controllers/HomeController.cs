@@ -17,12 +17,10 @@ namespace Shop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly IBrandsRepository _brandsRepository;
 
-        public HomeController(ILogger<HomeController> logger, IBrandsRepository brandsRepository)
+        public HomeController( IBrandsRepository brandsRepository)
         {
-            _logger = logger;
             _brandsRepository = brandsRepository;
         }
 

@@ -1,42 +1,43 @@
 ﻿@using Shop.Dto
 @model CreateOrderDto
+    <link rel="stylesheet" href="~/css/FormStyle.css" />
 
-<form method="post" asp-action="Create" enctype="multipart/form-data">
-    @*<input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId" />*@
-    <div class="form-group">
-        <label asp-for="Name">Имя</label>
-        <input asp-for="Name" class="form-control" placeholder="Name">
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="SureName">Фамилия</label>
-        <input asp-for="SureName" class="form-control" placeholder="SureName">
-        <span asp-validation-for="SureName" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="LastName">Отчество</label>
-        <input asp-for="LastName" class="form-control" placeholder="LastName">
-        <span asp-validation-for="LastName" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Email">Email</label>
-        <input type="email" asp-for="Email" class="form-control" placeholder="Email">
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="City">Город</label>
-        <input asp-for="City" class="form-control" placeholder="City">
-        <span asp-validation-for="City" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Street">Улица</label>
-        <input asp-for="Street" class="form-control" placeholder="Street">
-        <span asp-validation-for="Street" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Phone">Телефон</label>
-        <input asp-for="Phone" class="form-control" placeholder="Phone">
-        <span asp-validation-for="Phone" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    <form method="post" asp-action="Create" enctype="multipart/form-data" class="formm">
+        @*<input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId" />*@
+        <div class="form-group">
+            <label asp-for="Name">Имя</label>
+            <input asp-for="Name" class="form-control" placeholder="Name">
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="SureName">Фамилия</label>
+            <input asp-for="SureName" class="form-control" placeholder="SureName">
+            <span asp-validation-for="SureName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName">Отчество</label>
+            <input asp-for="LastName" class="form-control" placeholder="LastName">
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input type="email" asp-for="Email" class="form-control" placeholder="Email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="City">Город</label>
+            <input asp-for="City" class="form-control" placeholder="City">
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Street">Улица</label>
+            <input asp-for="Street" class="form-control" placeholder="Street">
+            <span asp-validation-for="Street" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Phone">Телефон</label>
+            <input asp-for="Phone" class="form-control" placeholder="Phone">
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btnn">Submit</button>
+    </form>

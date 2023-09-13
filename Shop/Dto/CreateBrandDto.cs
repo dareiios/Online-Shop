@@ -11,10 +11,11 @@ namespace Shop.Dto
     public class CreateBrandDto
     {
         public string Title { get; set; }
-
         public CareCosmetic CareCosmetic { get; set; }
         public Address? Address { get; set; }
         public IFormFile Image { get; set; }
+        public string Description { get; set; }
+
 
     }
 }

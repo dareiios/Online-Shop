@@ -13,15 +13,10 @@ namespace Shop.Models
         public string Street { get; set; }
         public string Email { get; set; }
         public int Sum { get; set; }
-        //public string UserId { get; set; }
         public string Name { get; set; }
         public string SureName { get; set; }
         public string LastName { get; set; }
         public int Phone { get; set; }
-
-        //[ForeignKey("BasketId")]
-        //public Basket Baskets { get; set; }
-        //public int BasketId { get; set; }
 
         [ForeignKey("AppUser")]
         public string? AppUserId { get; set; }

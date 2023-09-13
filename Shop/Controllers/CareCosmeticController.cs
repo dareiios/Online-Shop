@@ -15,15 +15,14 @@ namespace Shop.Controllers
     {
         private readonly ICareCosmRepository _careCosmRepository;
         private readonly IPhotoService _photoService;
-        private readonly IBasketRepository _basketRepository;
         private readonly ApplicationDbContext _context;
 
 
-        public CareCosmeticController(ICareCosmRepository careCosmRepository, IPhotoService photoService, IBasketRepository basketRepository = null, ApplicationDbContext context = null)
+        public CareCosmeticController(ICareCosmRepository careCosmRepository, IPhotoService photoService,
+            ApplicationDbContext context)
         {
             _careCosmRepository = careCosmRepository;
             _photoService = photoService;
-            _basketRepository = basketRepository;
             _context = context;
         }
 
@@ -39,7 +38,7 @@ namespace Shop.Controllers
             return View(cosm);
         }
 
-        [HttpPost]
+        //[HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
             var cosmetic = await _careCosmRepository.GetByIdAsync(id);
@@ -68,6 +67,7 @@ namespace Shop.Controllers
                 {
                     Title = dto.Title,
                     Description = dto.Description,
+                    HowToUse = dto.HowToUse,
                     Image = img.Url.ToString(),
                     CareCosmeticCategory = dto.CareCosmeticCategory,
                     BrandId = dto.BrandId,
@@ -95,6 +95,7 @@ namespace Shop.Controllers
             {
                 Title = cosm.Title,
                 Description = cosm.Description,
+                HowToUse = cosm.HowToUse,
                 ImgUrl = cosm.Image,
                 CareCosmeticCategory = cosm.CareCosmeticCategory,
                 BrandId = cosm.BrandId,
@@ -131,6 +132,7 @@ namespace Shop.Controllers
                     Id = dto.Id,
                     Title = dto.Title,
                     Description = dto.Description,
+                    HowToUse = dto.HowToUse,
                     Image = img.Url.ToString(),
                     CareCosmeticCategory = dto.CareCosmeticCategory,
                     BrandId = dto.BrandId,

@@ -1,74 +1,82 @@
 ﻿@using Shop.Data.Enums
 @using Shop.Dto
 @model EditCareCosmDto
-
-<form method="post" asp-action="Edit" enctype="multipart/form-data">
-    @*<input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId" />*@
-    <div class="form-group">
-        <label asp-for="Title">Название</label>
-        <input asp-for="Title" class="form-control" placeholder="Title">
-        <span asp-validation-for="Title" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Description">Описание</label>
-        <input asp-for="Description" class="form-control" placeholder="Description">
-        <span asp-validation-for="Title" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="CareCosmeticCategory">Категория</label>
-        <select asp-for="CareCosmeticCategory" asp-items="@Html.GetEnumSelectList<CareCosmeticCategory>()" class="form-control">
-            <option>--Select--</option>
-        </select>
-        <span asp-validation-for="CareCosmeticCategory" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="BrandId">Brand</label>
-        @*<input asp-for="Brand" class="form-control" placeholder="Brand">*@
-    <select name="BrandId">
-        @foreach (var item in Model.Brands)
-        {
-            if (item.Id == Model.BrandId)
-            {
-                <option value="@item.Id" selected>
-                    @item.Title
-                </option>
-            }
-            else
-            {
-                <option value="@item.Id">
-                    @item.Title
-                </option>
-            }
+    <link rel="stylesheet" href="~/css/FormStyle.css" />
 
 
-        }
-    </select>
-        <span asp-validation-for="BrandId" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Price">Цена</label>
-        <input asp-for="Price" class="form-control" placeholder="Title">
-        <span asp-validation-for="Price" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Address.Street">Улица</label>
-        <input asp-for="Address.Street" class="form-control" placeholder="Street">
-        <span asp-validation-for="Address.Street" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Address.City">Город</label>
-        <input asp-for="Address.City" class="form-control" placeholder="City">
-        <span asp-validation-for="Address.City" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Address.Region">Регион</label>
-        <input asp-for="Address.Street" class="form-control" placeholder="State">
-        <span asp-validation-for="Address.Region" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Image">Картинка</label>
-        <input asp-for="Image" type="file" class="form-control" placeholder="Image">
-        <span asp-validation-for="Image" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    <form method="post" asp-action="Edit" enctype="multipart/form-data" class="formm">
+        <center>
+            <h5>Редактирование Косметики: @Model.Title</h5>
+        </center>
+        <div class="form-group">
+            <label asp-for="Title">Название</label>
+            <input asp-for="Title" class="form-control" placeholder="Title">
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description">Описание</label>
+            <input asp-for="Description" class="form-control" placeholder="Description">
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="HowToUse">Использование</label>
+            <input asp-for="HowToUse" class="form-control" placeholder="HowToUse">
+            <span asp-validation-for="HowToUse" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CareCosmeticCategory">Категория</label>
+            <select asp-for="CareCosmeticCategory" asp-items="@Html.GetEnumSelectList<CareCosmeticCategory>()" class="form-control">
+                <option>--Select--</option>
+            </select>
+            <span asp-validation-for="CareCosmeticCategory" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="BrandId">Бренд</label>
+            <select name="BrandId" class="form-control">
+                @foreach (var item in Model.Brands)
+                {
+                    if (item.Id == Model.BrandId)
+                    {
+                        <option value="@item.Id" selected>
+                            @item.Title
+                        </option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">
+                            @item.Title
+                        </option>
+                    }
+
+
+                }
+            </select>
+            <span asp-validation-for="BrandId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Price">Цена</label>
+            <input asp-for="Price" class="form-control" placeholder="Title">
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Address.Street">Улица</label>
+            <input asp-for="Address.Street" class="form-control" placeholder="Street">
+            <span asp-validation-for="Address.Street" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Address.City">Город</label>
+            <input asp-for="Address.City" class="form-control" placeholder="City">
+            <span asp-validation-for="Address.City" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Address.Region">Регион</label>
+            <input asp-for="Address.Street" class="form-control" placeholder="State">
+            <span asp-validation-for="Address.Region" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Image">Картинка</label>
+            <input asp-for="Image" type="file" class="form-control" placeholder="Image">
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btnn">Изменить</button>
+    </form>

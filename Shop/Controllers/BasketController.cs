@@ -16,27 +16,21 @@ namespace Shop.Controllers
     {
 
         private readonly ICareCosmRepository _careCosmRepository;
-        private readonly ApplicationDbContext _context;
-        private readonly IPhotoService _photoService;
         private readonly IBasketRepository _basketRepository;
-        private readonly IHttpContextAccessor _httpContextAccessor;
 
 
 
 
-        public BasketController(ICareCosmRepository careCosmRepository, ApplicationDbContext context, IPhotoService photoService, IBasketRepository basketRepository, IHttpContextAccessor httpContextAccessor)
+        public BasketController(ICareCosmRepository careCosmRepository,
+            IBasketRepository basketRepository)
         {
             _careCosmRepository = careCosmRepository;
-            _context = context;
-            _photoService = photoService;
             _basketRepository = basketRepository;
-            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<IActionResult> Index()
         {
             var baskets = _basketRepository.GetlAll();
-            //var baskets = _context.Baskets.Include(x => x.CareCosmetic).Include(x => x.DecorativeCosmetic);
             return View(baskets);
         }
 
@@ -45,7 +39,6 @@ namespace Shop.Controllers
         {
             var cosmCard = await _careCosmRepository.GetByIdAsyncTracking(id);
            _basketRepository.AddCareCosmeticToBasket(cosmCard);//if !=null
-            //_basketRepository.AddBasketToUser(basket);
             return RedirectToAction("Index");
         }
 
@@ -56,14 +49,14 @@ namespace Shop.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
+        //[HttpPost]
         public async Task<IActionResult> Increment(int id)
         {
             _basketRepository.IncrementCareCosmeticToBasket(id);
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
+        //[HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
             var basket = await _basketRepository.GetByIdAsync(id);

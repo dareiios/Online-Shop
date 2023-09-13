@@ -12,11 +12,6 @@ namespace Shop.Dto
     {
         public int Id { get; set; }
         public string? Title { get; set; }
-
-
-        //public List<string> Titles { get; set; }
-        //public Brands Brands { get; set; }
-
         public string? Description { get; set; }
         public IFormFile Image { get; set; }
         public CareCosmeticCategory CareCosmeticCategory { get; set; }
@@ -25,6 +20,8 @@ namespace Shop.Dto
         public string? AppUserId { get; set; }
         public Address Address { get; set; }
         public int Price { get; set; }
+        public string HowToUse { get; set; }
+
 
 
     }

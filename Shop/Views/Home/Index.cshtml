@@ -1,46 +1,73 @@
-﻿@using Shop.Dto
+﻿<link rel="stylesheet" href="~/css/CardBrand.css" />
+@using Shop.Dto
 @model HomeDto
 
-@{
-    ViewData["Title"] = "Home Page";
-}
 
+<div class="sectionn">
+    <section class="home" id="home">
+        <div class="home-text">
+            <h1>Beauty</h1>
+            <p>
+                У нас вы найдете более 1000 товаров для макияжа,<br />
+                включая популярные мировые бренды и уникальные продукты
+            </p>
+            <a href="#row" class="btn">Просмотр</a>
+        </div>
+    </section>
+    <center>
+        <h1>Бренды вашего города @Model.City, @Model.Region</h1>
 
+    </center>
 
-<div class="album py-5 bg-light">
     <div class="container">
-        <div class="row">
-            <h1 class="fw-light">Бренды вашего города @Model.City, @Model.Region</h1>
-            @if (Model.Brands == null)
+        <div class="row" id="row">
+            @foreach (var item in Model.Brands)
             {
-                <h1 class="fw-light">
-                    There are no running clubs in your area! <a asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-                    and create one!
-                </h1>
-            }
-            else
-            {
-                @foreach (var item in Model.Brands)
-                {
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img src="@item.Image" class="bd-placeholder-img card-img-top" width="100%" height="225"></img>
-                            <div class="card-body">
-                                <p class="card-text">@item.Title</p>
-                                @*<p class="card-text">@item.Description</p>*@
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a type="btn btn-success" asp-controller="Brands" asp-action="Details" asp-route-id="@item.Id"
-                                           class="btn btn-sm btn-outline-secondary">View</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="card">
+                    <a class="btn" asp-controller="Brands" asp-action="Details" asp-route-id="@item.Id">
+                    <img class="card-img" src="@item.Image" />
+                    </a>
+                    <div class="card-title text-center">@item.Title</div>
+                    <div class="card-describe">
+                        @item.Description
                     </div>
-                }
+                </div>
             }
         </div>
     </div>
 </div>
 
-
+    @*<div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <h1 class="fw-light">Бренды вашего города @Model.City, @Model.Region</h1>
+                    @if (Model.Brands == null)
+                    {
+                        <h1 class="fw-light">
+                            There are no running clubs in your area! <a asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                            and create one!
+                        </h1>
+                    }
+                    else
+                    {
+                        @foreach (var item in Model.Brands)
+                        {
+                            <div class="col-md-4">
+                                <div class="card mb-4 box-shadow">
+                                    <img src="@item.Image" class="bd-placeholder-img card-img-top" width="100%" height="225"></img>
+                                    <div class="card-body">
+                                        <p class="card-text">@item.Title</p>
+                                        <p class="card-text">описание будет</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a type="btn btn-success" asp-controller="Brands" asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">View</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>*@

@@ -15,7 +15,8 @@ namespace Shop.Controllers
         private readonly IBrandsRepository _brandsRepository;
         private readonly IPhotoService _photoService;
 
-        public BrandsController(IBrandsRepository brandsRepository, IPhotoService photoService)
+        public BrandsController(IBrandsRepository brandsRepository,
+            IPhotoService photoService)
         {
             _brandsRepository = brandsRepository;
             _photoService = photoService;
@@ -43,6 +44,7 @@ namespace Shop.Controllers
                 {                    
                     Title = dto.Title,
                     Image = img.Url.ToString(),
+                    Description = dto.Description,
                     Address = new Address()
                     {
                         City = dto.Address.City,
@@ -78,6 +80,7 @@ namespace Shop.Controllers
             {
                 Title = brand.Title,
                 ImgUrl = brand.Image,
+                Description = brand.Description,
                 Address = new Address()
                 {
                     City = brand.Address.City,
@@ -102,6 +105,7 @@ namespace Shop.Controllers
                 {
                     Id = dto.Id,
                     Title = dto.Title,
+                    Description = dto.Description,
                     Image = photo.Url.ToString(),
                     Address = dto.Address              
                 };

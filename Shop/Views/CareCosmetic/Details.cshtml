@@ -1,32 +1,87 @@
 ﻿@model CareCosmetic
+    <link rel="stylesheet" href="~/css/detailAccordion.css" />
 
-<div class="container">
+    <div class="container wrapp">
+        <center>
+            <h1>
+                Тушь
+            </h1>
+        </center>
 
-    <h1 class="my-4">
-        Club: @Model.Title
-    </h1>
+        <div class="row">
+            <div class="">
+                <img class="" src="@Model.Image" alt="">
+            </div>
 
-    <div class="row">
+            <ul class="accordion">
+                <li>
+                    <input type="radio" name="accordion" id="first" checked />
+                    <label for="first" class="labell">Описание</label>
+                    <div class="content">
+                        <p>
+                            @Model.Description
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <input type="radio" name="accordion" id="second" />
+                    <label for="second" class="labell">Как использовать</label>
+                    <div class="content">
+                        <p>
+                            @Model.HowToUse
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <input type="radio" name="accordion" id="third" />
+                    <label for="third" class="labell">Informations</label>
+                    <div class="content">
+                        <p>
+                            Тушь
 
-        <div class="col-md-8">
-            <img class="img-fluid" src="@Model.Image" alt="">
-        </div>
+                        <p>Город: @Model.Address.City</p>
+                        <p>Категория: @Model.CareCosmeticCategory</p>
+                        <p>Бренд: @Model.Brand.Title</p>
+                        <p>Цена: @Model.Price руб</p>
 
-        <div class="col-md-4">
-            <h3 class="my-3">@Model.Title</h3>
-            <p>@Model.Description</p>
-            <h3 class="my-3">Info</h3>
-            <ul>
-                <li>@Model.Address.City</li>
-                <li>@Model.Address.Region</li>
-                <li>@Model.CareCosmeticCategory</li>
-                <li>@Model.Brand.Title</li>
-                <li>@Model.Price</li>
 
+                        </p>
+                    </div>
+                </li>
             </ul>
+
         </div>
 
     </div>
-</div>
+    </div>
 
+    @*  <div class="container">
+
+            <h1 class="my-4">
+                @Model.Title
+            </h1>
+
+            <div class="row">
+
+                <div class="col-md-8">
+                    <img class="img-fluid" src="@Model.Image" alt="">
+                </div>
+
+                <div class="col-md-4">
+                    <h3 class="my-3">@Model.Title</h3>
+                    <p>@Model.Description</p>
+                    <h3 class="my-3">Info</h3>
+                    <ul>
+                        <li>@Model.Address.City</li>
+                        <li>@Model.Address.Region</li>
+                        <li>@Model.CareCosmeticCategory</li>
+                        <li>@Model.Brand.Title</li>
+                        <li>@Model.Price</li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    *@
 

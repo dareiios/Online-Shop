@@ -1,0 +1,56 @@
+﻿body {
+    /*background-color: #eee;*/
+    background: url(/images/0.jpg);
+    background-size: cover;
+}
+
+.row {
+    margin-left: 50px;
+}
+
+.card {
+    background-color: #ffff;
+    width: 200px;
+    border-radius: 20px;
+    padding: 20px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    box-shadow: 10px 10px 27px #434040;
+    margin-top: 20px;
+    /* align-items: center; */
+}
+
+.card-img {
+    border-radius: 11px;
+}
+
+.card-title {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.card-describe {
+    font-size: 15px;
+    font-weight: lighter;
+    margin-top: 8px;
+}
+
+.btn-keeper {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn {
+    background-color: darkgrey;
+    padding: 7px 12px;
+    text-decoration: none;
+    color: black;
+    border-radius: 8px;
+    transition: all 0.5s linear;
+    margin-bottom: 5px;
+}
+
+    .btn:hover {
+        background-color: rgb(201, 201, 201);
+    }

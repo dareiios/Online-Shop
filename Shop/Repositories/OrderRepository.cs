@@ -61,11 +61,5 @@ namespace Shop.Repositories
             return Save();
         }
 
-        //public async Task<int> GetBasketSum(Basket basket)
-        //{
-        //    var basketDb = _context.Baskets.Where(x=>x.Id == basket.Id);
-        //    var r = basketDb.Contains()
-        //}
-
     }
 }

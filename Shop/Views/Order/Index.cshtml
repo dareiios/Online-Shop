@@ -1,33 +1,33 @@
 ﻿@model IEnumerable<Order>
+    <link rel="stylesheet" href="~/css/CosmCard.css" />
 
 
-<div class="album py-5 bg-light">
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Номер</th>
-                <th scope="col">Фио</th>
-                <th scope="col">Город</th>
-                <th scope="col">Улица</th>
-                <th scope="col">Email</th>
-                <th scope="col">Сумма заказа</th>
-                <th scope="col"> </th>
+    <div class="album py-5">
+        <table class="table myTbl">
+            <thead>
+                <tr>
+                    <th scope="col">Номер</th>
+                    <th scope="col">Фио</th>
+                    <th scope="col">Город</th>
+                    <th scope="col">Улица</th>
+                    <th scope="col">Email</th>
+                    <th scope="col"> </th>
 
-                @foreach (var item in Model)
-                {
-<tbody>
-                        <tr>
-                            <th scope="row">@item.Id</th>
-                            <td>@item.Name @item.LastName @item.SureName</td>
-                            <td>@item.City</td>
-                            <td>@item.Street</td>
-                            <td>@item.Email</td>
-                            
-                        </tr>
-                    </tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tbody>
+                            <tr>
+                                <th scope="row">@item.Id</th>
+                                <td>@item.Name @item.LastName @item.SureName</td>
+                                <td>@item.City</td>
+                                <td>@item.Street</td>
+                                <td>@item.Email</td>
 
-                 }
-            </tr>
-        </thead>
+                            </tr>
+                        </tbody>
+
+                    }
+                </tr>
+          </thead>
     </table>
 </div>

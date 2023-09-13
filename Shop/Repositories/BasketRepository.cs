@@ -17,31 +17,25 @@ namespace Shop.Repositories
 
         private readonly ApplicationDbContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly UserManager<AppUser> _usermanager;
         private readonly IUserRepository _userRepository;
 
 
 
-        public BasketRepository(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor, UserManager<AppUser> usermanager, IUserRepository userRepository)
+        public BasketRepository(ApplicationDbContext context,
+            IHttpContextAccessor httpContextAccessor, IUserRepository userRepository)
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
-            _usermanager = usermanager;
             _userRepository = userRepository;
         }
 
-        public bool Delete(Basket basket)
-        {
-            _context.Baskets.Remove(basket);
-            return Save();
-        }
 
 
-        //добавить указание айдипользователя. берем айди юзера и находим из бд его корзину если нет, то создаем
-        public void AddCareCosmeticToBasket(CareCosmetic cosmetic)//добавила стр 43, в 44-поиск юзераб 51. ранше был бул и возвращал в конце просто сохранение
+        public void AddCareCosmeticToBasket(CareCosmetic cosmetic)
         {
             var currentUserId = _httpContextAccessor.HttpContext?.User.GetUserId();
-            var basket = _context.Baskets.Where(x=>x.AppUser.Id == currentUserId).FirstOrDefault(x=>x.CareCosmeticId == cosmetic.Id);//где юзер айди
+            var basket = _context.Baskets.Where(x=>x.AppUser.Id == currentUserId)
+                .FirstOrDefault(x=>x.CareCosmeticId == cosmetic.Id);//где юзер айди
             if(basket == null)
             {
                  _context.Baskets.Add(new Basket()
@@ -56,20 +50,50 @@ namespace Shop.Repositories
             else
             {
                 basket.Count++;
-                //var baskeT = _context.Baskets.Include(c => c.CareCosmetic).FirstOrDefault(x=>x.Id == basket.Id);
-                //baskeT.Sum = baskeT.CareCosmetic.Price * baskeT.Count; //Почему тут ошибка а в предмтвлении все ок
-                //baskeT.Count++;
                 Update(basket);
-                //_context.Baskets.Update(basket);
             }
-            //return Save();
         }
-               
-        
+        public void AddBasketToUser(Basket basket)
+        {
+            var currentUserId = _httpContextAccessor.HttpContext?.User.GetUserId();
+            var userBd = _userRepository.GetUserById(currentUserId);
+            var newUser = new AppUser()
+            {
+                ProfileImgUrl = userBd.ProfileImgUrl,
+                City = userBd.City,
+                State = userBd.State,
+                Adress = userBd.Adress,
+                AddressId = userBd.AddressId,
+                careCosmetics = userBd.careCosmetics,
+                BasketId = basket.Id,
+                Basket = basket
+            };
+            _userRepository.Update(newUser);
+        }
+
+        public void DecrimentCareCosmeticToBasket(int id)
+        {
+            var cosmetic = GetByIdAsync(id).Result;
+            if (cosmetic.Count > 1)
+            {
+                cosmetic.Count--;
+                Update(cosmetic);
+            };
+        }
+
+        public void IncrementCareCosmeticToBasket(int id)
+        {
+            var cosmetic = GetByIdAsync(id).Result;
+            cosmetic.Count++;
+            Update(cosmetic);
+
+        }
+
+
+      
         public IEnumerable<Basket> GetlAll()//все корзины пользователя
         {
             var currentUser = _httpContextAccessor.HttpContext?.User.GetUserId();
-            //var baskets = _context.Baskets.Include(t=>t.CareCosmetic).Where(x => x.AppUser.Id == currentUser.ToString());
             var baskets = _context.Baskets.Include(c=>c.CareCosmetic).Where(x => x.AppUser.Id == currentUser);//Include(d=>d.DecCosmeticId).
             return baskets;
         }
@@ -94,47 +118,13 @@ namespace Shop.Repositories
             return Save();
         }
 
-        public void DecrimentCareCosmeticToBasket(int id)
+
+        public bool Delete(Basket basket)
         {
-            var cosmetic = GetByIdAsync(id).Result;
-            if (cosmetic.Count > 1)
-            {
-                cosmetic.Count --;
-                Update(cosmetic);
-            };
+            _context.Baskets.Remove(basket);
+            return Save();
         }
 
-        public void IncrementCareCosmeticToBasket(int id)
-        {
-            var cosmetic = GetByIdAsync(id).Result;
-                cosmetic.Count++;
-            Update(cosmetic);
-            
-        }
-
-
-        public void AddBasketToUser(Basket basket)
-        {
-            var currentUserId = _httpContextAccessor.HttpContext?.User.GetUserId();
-            var userBd = _userRepository.GetUserById(currentUserId);
-            var newUser = new AppUser()
-            {
-                ProfileImgUrl = userBd.ProfileImgUrl,
-                City = userBd.City,
-                State = userBd.State,
-                Adress = userBd.Adress,
-                AddressId = userBd.AddressId,
-                careCosmetics = userBd.careCosmetics,
-                BasketId = basket.Id,
-                Basket = basket
-            };
-            _userRepository.Update(newUser);
-        }
-
-        //public async Task<int> GetBasketSum(Basket basket)
-        //{
-        //    var basketDb = _context.Baskets.Where(x => x.Id == basket.Id);
-        //}
 
     }
 }

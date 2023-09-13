@@ -25,7 +25,7 @@ namespace Shop.Models
         public int? AddressId { get; set; }
         public Address? Address { get; set; }
         public CareCosmeticCategory CareCosmeticCategory { get; set; }
-        //public string Brand { get; set; }
         public int Price { get; set; }
+        public string HowToUse { get; set; }
     }
 }

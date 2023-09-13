@@ -1,0 +1,143 @@
+﻿/* * {
+	box-sizing: border-box;
+}
+body {
+	margin-top: 70px;
+} */
+
+body {
+    background: url(/images/0.jpg);
+    background-size: cover;
+}
+
+.cardd::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #c0c0c0;
+    transform: skewY(345deg);
+    position: absolute;
+    top: -50%;
+    transition: 0.5s;
+}
+
+.cardd {
+    width: 250px;
+    height: 300px;
+    background-color: #E6E6FA;
+    color: black;
+    border-radius: 20px;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+    .cardd:hover::before {
+        transform: skewY(390deg);
+        top: -70%;
+    }
+
+.cardd-img {
+    margin-top: 30px;
+    width: 100%;
+    height: 150px;
+    position: relative;
+    transition: 0.5s;
+}
+
+.cardd:hover .cardd-img {
+    width: 60%;
+    height: 40%;
+}
+
+.cardd:hover .cardd-btn {
+    margin-top: -40px;
+}
+
+.cardd-name {
+    font-size: 18px;
+    margin: 0 0 10px;
+    position: relative;
+}
+
+.cardd-price {
+    font-size: 24px;
+    /* margin: 0 0 55px; */
+    position: relative;
+}
+
+.cardd-currency {
+    font-size: 18px;
+}
+
+.cardd-btn {
+    border: none;
+    cursor: pointer;
+    background-color: rgb(139, 137, 137);
+    padding: 15px 30px;
+    border-radius: 30px;
+    color: white;
+    text-transform: inherit;
+    font-weight: inherit;
+    position: relative;
+    margin-top: 40px;
+    transition: all 1s;
+}
+
+    .cardd-btn:hover {
+        background-color: #696969;
+        color: white;
+    }
+
+    .cardd-btn + .cardd-btn {
+        display: table;
+        margin-right: 70px;
+    }
+
+.cardd-btnn {
+    border: none;
+    cursor: pointer;
+    background-color: rgb(139, 137, 137);
+    padding: 15px 30px;
+    border-radius: 30px;
+    color: white;
+    text-transform: inherit;
+    font-weight: inherit;
+    position: relative;
+    margin-top: 40px;
+    margin-left: 50px;
+    transition: all 1s;
+}
+
+    .cardd-btnn:hover {
+        background-color: #696969;
+        color: white;
+    }
+
+    .cardd-btnn + .cardd-btnn {
+        display: table;
+        /* margin-right: 70px; */
+        margin-left: 10%;
+        top: -5px;
+    }
+
+.cardd:hover .cardd-btnn {
+    margin-top: -40px;
+}
+
+.btns {
+    margin-left: 20px;
+}
+
+
+.myTbl {
+    background-color: #e6e6fa;
+    width: 70%;
+    margin-left: 16%;
+}

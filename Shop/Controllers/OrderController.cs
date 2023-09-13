@@ -15,10 +15,17 @@ namespace Shop.Controllers
         private readonly IOrderRepository _orderRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public OrderController(IOrderRepository orderRepository, IHttpContextAccessor httpContextAccessor)
+        public OrderController(IOrderRepository orderRepository, 
+            IHttpContextAccessor httpContextAccessor)
         {
             _orderRepository = orderRepository;
             _httpContextAccessor = httpContextAccessor;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var oreders = await _orderRepository.GetlAll();
+            return View(oreders);
         }
 
         public IActionResult Create()
@@ -31,7 +38,6 @@ namespace Shop.Controllers
         public IActionResult Create(CreateOrderDto dto)
         {
             var currentUserId = _httpContextAccessor.HttpContext?.User.GetUserId();
-            //sum=репозиторий получение суммы из баскета
 
             if (ModelState.IsValid)
             {
@@ -53,12 +59,6 @@ namespace Shop.Controllers
             return View(dto);
         }
 
-
-        public async Task<IActionResult> Index()
-        {
-            var oreders = await _orderRepository.GetlAll();
-            return View(oreders);
-        }
 
 
 

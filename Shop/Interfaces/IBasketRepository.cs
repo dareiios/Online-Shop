@@ -10,10 +10,7 @@ namespace Shop.Interfaces
     {
         IEnumerable<Basket> GetlAll();
         Task<Basket> GetByIdAsync(int id);
-        //Basket GetBasketCareCosmetic();
-        //Task<Basket> GetByIdAsyncTracking(int id);
-
-        void AddCareCosmeticToBasket(CareCosmetic cosmetic);//был бул
+        void AddCareCosmeticToBasket(CareCosmetic cosmetic);
         void AddBasketToUser(Basket basket);
         void DecrimentCareCosmeticToBasket(int id);
         void IncrementCareCosmeticToBasket(int id);

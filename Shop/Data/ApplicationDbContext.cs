@@ -39,7 +39,7 @@ namespace Shop.Data
                 Description = "this is description",
                 Image = "https://cdn.tkaner.com/wp/uploads/2020/11/kosmetika-1-scaled.jpg",
                 AddressId =1,
-                CareCosmeticCategory = Enums.CareCosmeticCategory.Маска,
+                CareCosmeticCategory = Enums.CareCosmeticCategory.Карандаш,
                 Title = "Маска для лица"
             });
 
@@ -49,7 +49,7 @@ namespace Shop.Data
                 Description = "this is description2",
                 Image = "https://cdn.tkaner.com/wp/uploads/2020/11/kosmetika-1-scaled.jpg",
                 AddressId = 1,
-                CareCosmeticCategory = Enums.CareCosmeticCategory.Крем,
+                CareCosmeticCategory = Enums.CareCosmeticCategory.Консилер,
                 Title = "Крем для лица"
             });
 

@@ -1,0 +1,31 @@
+﻿.formm {
+    /* up left down right */
+    margin: -10px 300px 0px 300px;
+    height: 30px;
+    line-height: 5px;
+}
+
+.formm h5{
+    margin-top: -18px;
+}
+
+
+body {
+    /*background-color: #eee;*/
+    background: url(/images/0.jpg);
+    background-size: cover;
+}
+
+.btnn {
+    background-color: darkgrey;
+    padding: 7px 12px;
+    text-decoration: none;
+    color: black;
+    border-radius: 8px;
+    transition: all 0.5s linear;
+    margin-bottom: 5px;
+}
+
+    .btnn:hover {
+        background-color: rgb(201, 201, 201);
+    }

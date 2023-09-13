@@ -20,5 +20,7 @@ namespace Shop.Dto
 
         [ForeignKey("Address")]
         public Address? Address { get; set; }
+        public string Description { get; set; }
+
     }
 }

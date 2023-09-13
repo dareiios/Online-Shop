@@ -29,6 +29,12 @@ namespace Shop.Repositories
             _context.Brands.Remove(brand);
             return Save();
         }
+        public bool Update(Brands brand)
+        {
+            _context.Brands.Update(brand);
+            return Save();
+        }
+
 
         public async Task<IEnumerable<Brands>> GetBrandByCity(string city)
         {
@@ -63,12 +69,7 @@ namespace Shop.Repositories
             return save > 0 ? true : false;
         }
 
-        public bool Update(Brands brand)
-        {
-            _context.Brands.Update(brand);
-            return Save();
-        }
-
+      
         
     }
 }
