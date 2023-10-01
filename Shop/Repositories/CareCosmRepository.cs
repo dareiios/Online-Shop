@@ -53,7 +53,7 @@ namespace Shop.Repositories
         public bool Save()
         {
             var save = _context.SaveChanges();
-            return save > 0 ? true : false;
+            return save > 0;
         }
 
         public bool Update(CareCosmetic cosmetic)
