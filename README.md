@@ -9,9 +9,13 @@ There is functionality for logging in and creating a new account using cookie-ba
 
 ## Business Logic
 -Personal Account (registration, authentication, order history).
+
 -Catalog of Cosmetic Brands and Their Products (view all cosmetics or cosmetics of a specific brand).
+
 -Adding Items to Cart and Placing Orders.
+
 -Administrator Functionality: adding, editing, and deleting products and brands.
+
 -Displaying Brands Created in the User's City. The website https://ipinfo.io is used for this.
 
 ## Database Schema
